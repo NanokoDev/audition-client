@@ -44,7 +44,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "keyring", specifier = ">=25.6.0" },
-    { name = "nanoko-python", specifier = ">=0.1.1" },
+    { name = "nanoko-python", specifier = ">=0.1.2" },
     { name = "pyqt6", specifier = ">=6.9.0" },
     { name = "pyqt6-fluent-widgets", specifier = ">=1.8.1" },
 ]
@@ -299,15 +299,15 @@ wheels = [
 
 [[package]]
 name = "nanoko-python"
-version = "0.1.1"
+version = "0.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
     { name = "pydantic", extra = ["email"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/de/2e/e9facea0af4810dcfb5127e42e832026d508755909c4aab346bbe93adf1d/nanoko_python-0.1.1.tar.gz", hash = "sha256:542aa6b01148e105851276c4865e791d663ea24229c6eae20739a1cca366d8a0", size = 8563 }
+sdist = { url = "https://files.pythonhosted.org/packages/ed/d1/86922d0e8919641a99b98ff50dcfd009066fb6fc417fb7c0fe6483eaf6f0/nanoko_python-0.1.2.tar.gz", hash = "sha256:d3dc88cde2cee01c22447729a51d12b707794af95bb4844535cfccb1aad1159a", size = 8673 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c1/cb/2a48bcf8a91a52cbe5486238ea13f523665b3716812b45d2b8dacef0f52b/nanoko_python-0.1.1-py3-none-any.whl", hash = "sha256:37a9095243fae92cb189455b0cd18d3abed7fac7002ad6b399979a03a93c4281", size = 11721 },
+    { url = "https://files.pythonhosted.org/packages/cc/0c/2812eb71e30e3c96421002d39ad8acbb4cf1f992ebecdbdbafa3cd1a0ce8/nanoko_python-0.1.2-py3-none-any.whl", hash = "sha256:c667aec3302139bfc37982bec58f85239b4441f294940af51d5328ef58b60dbb", size = 11819 },
 ]
 
 [[package]]
