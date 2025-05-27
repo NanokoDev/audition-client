@@ -111,7 +111,7 @@ class QuestionListWindow(Window):
         self.questionTable = TableWidget(self)
         self.questionTable.setColumnCount(5)
         self.questionTable.setHorizontalHeaderLabels(
-            ["ID", "Source", "Audited", "Deleted", "Sub-Questions"]
+            ["ID", "Name", "Source", "Audited", "Deleted", "Sub-Questions"]
         )
         self.questionTable.horizontalHeader().setStretchLastSection(True)
         self.questionTable.setEditTriggers(TableWidget.EditTrigger.NoEditTriggers)
@@ -191,9 +191,13 @@ class QuestionListWindow(Window):
             idItem = QTableWidgetItem(str(question.id))
             self.questionTable.setItem(row, 0, idItem)
 
+            # Name
+            nameItem = QTableWidgetItem(question.name)
+            self.questionTable.setItem(row, 1, nameItem)
+
             # Source
             sourceItem = QTableWidgetItem(question.source)
-            self.questionTable.setItem(row, 1, sourceItem)
+            self.questionTable.setItem(row, 2, sourceItem)
 
             # Audited
             statusItem = QTableWidgetItem()
@@ -210,8 +214,8 @@ class QuestionListWindow(Window):
             statusIcon.setFixedSize(QSize(20, 20))
             statusLayout.addWidget(statusIcon)
 
-            self.questionTable.setItem(row, 2, statusItem)
-            self.questionTable.setCellWidget(row, 2, statusWidget)
+            self.questionTable.setItem(row, 3, statusItem)
+            self.questionTable.setCellWidget(row, 3, statusWidget)
 
             # Deleted
             deletedItem = QTableWidgetItem()
@@ -228,15 +232,15 @@ class QuestionListWindow(Window):
             deletedIcon.setFixedSize(QSize(20, 20))
             deletedLayout.addWidget(deletedIcon)
 
-            self.questionTable.setItem(row, 3, deletedItem)
-            self.questionTable.setCellWidget(row, 3, deletedWidget)
+            self.questionTable.setItem(row, 4, deletedItem)
+            self.questionTable.setCellWidget(row, 4, deletedWidget)
 
             # Sub-question
             subCount = len(question.sub_questions)
             countItem = QTableWidgetItem(
                 f"{subCount} sub-questions" if subCount > 1 else "1 sub-question"
             )
-            self.questionTable.setItem(row, 4, countItem)
+            self.questionTable.setItem(row, 5, countItem)
 
     def populateQuestionTable(self, questions: List[Question]):
         """Populate the question table with data from API
@@ -262,7 +266,8 @@ class QuestionListWindow(Window):
             self.filtered_questions = [
                 q
                 for q in self.questions
-                if text.lower() in q.source.lower()
+                if text.lower() in q.name.lower()
+                or text.lower() in q.source.lower()
                 or text in str(q.id)
                 or text in ("yes" if q.is_audited else "no")
             ]

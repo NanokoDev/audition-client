@@ -120,6 +120,12 @@ class ApiWorker(QThread):
 
                 questionId = subQuestionData.get("question_id")
                 subQuestionId = subQuestionData.get("sub_question_id")
+                questionName = subQuestionData.get("question_name")
+
+                if questionName.strip() != "":
+                    self.nanokoClient.bank.set_question_name(
+                        question_id=questionId, name=questionName
+                    )
 
                 originalSubQuestions = self.nanokoClient.bank.get_questions(
                     question_id=questionId

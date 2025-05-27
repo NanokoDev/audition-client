@@ -178,6 +178,13 @@ class SubQuestionEditWindow(Window):
     def _setupForm(self):
         row = 0
 
+        # Name
+        self.formLayout.addWidget(BodyLabel("Name:"), row, 0)
+        self.nameEdit = LineEdit()
+        self.nameEdit.setPlaceholderText("Enter name")
+        self.formLayout.addWidget(self.nameEdit, row, 1)
+        row += 1
+
         # Source
         self.formLayout.addWidget(BodyLabel("Source:"), row, 0)
         self.sourceLabel = BodyLabel("")
@@ -472,6 +479,8 @@ class SubQuestionEditWindow(Window):
 
     def _populateForm(self):
         """Populate form with sub-question data"""
+        self.nameEdit.setText(self.question.name)
+
         self.sourceLabel.setText(self.question.source)
         self.questionIdLabel.setText(str(self.question.id))
 
@@ -531,6 +540,7 @@ class SubQuestionEditWindow(Window):
         return {
             "sub_question_id": self.subQuestion.id,
             "question_id": self.questionId,
+            "question_name": self.nameEdit.text(),
             "description": self.descriptionEdit.toPlainText(),
             "answer": self.answerEdit.toPlainText(),
             "concept": ConceptType[self.conceptComboBox.currentText()],
@@ -556,6 +566,7 @@ class SubQuestionEditWindow(Window):
             enabled (bool): Whether to enable or disable the form elements
         """
         # Form fields
+        self.nameEdit.setEnabled(enabled)
         self.descriptionEdit.setEnabled(enabled)
         self.answerEdit.setEnabled(enabled)
         self.conceptComboBox.setEnabled(enabled)

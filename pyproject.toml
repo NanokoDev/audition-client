@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "keyring>=25.6.0",
-    "nanoko-python>=0.1.2",
+    "nanoko-python>=0.1.3",
     "pyqt6>=6.9.0",
     "pyqt6-fluent-widgets>=1.8.1",
 ]
